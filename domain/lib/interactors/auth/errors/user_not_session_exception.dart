@@ -1,0 +1,1 @@
+class UserNotSessionException implements Exception {}

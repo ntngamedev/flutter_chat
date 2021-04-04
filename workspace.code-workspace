@@ -5,11 +5,12 @@
 			"path": "app"
 		},
 		{
+			"name": "data",
 			"path": "data"
 		},
 		{
+			"name": "domain",
 			"path": "domain"
 		}
-	],
-	"settings": {}
+	]
 }
