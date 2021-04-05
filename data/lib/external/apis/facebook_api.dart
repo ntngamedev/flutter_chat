@@ -1,5 +1,5 @@
-import 'package:data/contracts/facebook/facebook_user_contract.dart';
-import 'package:data/errors/facebook/facebook_login_failed.dart';
+import 'package:data/external/contracts/facebook/facebook_user_contract.dart';
+import 'package:data/external/errors/facebook/facebook_login_failed.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class FacebookAPI {

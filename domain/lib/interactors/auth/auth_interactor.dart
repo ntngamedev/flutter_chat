@@ -7,9 +7,9 @@ class AuthInteractor {
 
   AuthInteractor(this._userRepository);
 
-  Future saveUserSession() {
-    return _userRepository.saveUserSession();
-  }
+  Future saveUserSession(User user) => _userRepository.saveUserSession(user);
+
+  Future removeUserSession() => _userRepository.removeUserSession();
 
   Future<User> getUserSesion() async {
     final user = await _userRepository.getUserSession();
@@ -21,11 +21,19 @@ class AuthInteractor {
     return user;
   }
 
-  Future<User> loginWithFacebook() {
-    return _userRepository.loginWithFacebook();
+  Future<User> loginWithFacebook() async {
+    final user = await _userRepository.loginWithFacebook();
+
+    saveUserSession(user);
+
+    return user;
   }
 
-  Future<User> loginWithGoogle() {
-    return _userRepository.loginWithGoogle();
+  Future<User> loginWithGoogle() async {
+    final user = await _userRepository.loginWithGoogle();
+
+    saveUserSession(user);
+
+    return user;
   }
 }

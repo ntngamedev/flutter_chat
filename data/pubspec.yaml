@@ -10,8 +10,11 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_facebook_auth: ^3.3.2
-  flutter_facebook_login: ^3.0.0
-
+  get_storage: ^2.0.2
+  hive: ^2.0.2
+  build_runner: ^1.12.2
+  hive_generator: ^1.0.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

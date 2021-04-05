@@ -7,4 +7,8 @@ class User {
   User(this.id, this.name, this.avatarURL, this.type);
 }
 
-enum UserType { none, facebook, google }
+enum UserType { 
+  none, 
+  facebook, 
+  google 
+}

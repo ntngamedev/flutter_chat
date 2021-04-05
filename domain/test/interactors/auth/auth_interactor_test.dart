@@ -23,29 +23,38 @@ void main() {
   });
 
   group("Auth Interactor: ", () {
+    test("saveUserSession shoud return nothing", () async {
+      expect((await _authInteractor.saveUserSession(_userNone)), isA());
+      verify(() => _userRepository.saveUserSession(_userNone)).called(1);
+    });
+
+    test("removeUserSession shoud return nothing", () async {
+      expect((await _authInteractor.removeUserSession()), isA());
+      verify(() => _userRepository.removeUserSession()).called(1);
+    });
+
     test("getUserSession should return an User", () async {
       when(() => _userRepository.getUserSession()).thenAnswer((_) async => _userNone);
       expect(await _authInteractor.getUserSesion(), isA<User>());
     });
 
     test("getUserSession when not user in session should return UserNotSessionException", () {
-      when(() => _userRepository.getUserSession()).thenAnswer((_) async => null);
-      expect(() async => await _authInteractor.getUserSesion(), throwsA(isA<UserNotSessionException>()));
+      when(() => _userRepository.getUserSession()).thenAnswer((_) => null);
+      expect(() async => _authInteractor.getUserSesion(), throwsA(isA<UserNotSessionException>()));
     });
 
-    test("saveUserSesiion shoud return nothing", () async {
-      expect((await _authInteractor.saveUserSession()), isA());
-      verify(() => _authInteractor.saveUserSession()).called(1);
-    });
-
-    test("loginWithFacebook shoud return an User with type facebook", () async {
+    test("loginWithFacebook shoud return user type facebook and save user in session", () async {
       when(() => _userRepository.loginWithFacebook()).thenAnswer((_) async => _userFacebook);
       expect((await _authInteractor.loginWithFacebook()).type, equals(UserType.facebook));
+      verify(() => _userRepository.loginWithFacebook()).called(1);
+      verify(() => _userRepository.saveUserSession(_userFacebook)).called(1);
     });
 
-    test("loginWithGoogle shoud return an User with type google", () async {
+    test("loginWithGoogle shoud return user type google and save user in session", () async {
       when(() => _userRepository.loginWithGoogle()).thenAnswer((_) async => _userGoogle);
       expect((await _authInteractor.loginWithGoogle()).type, equals(UserType.google));
+      verify(() => _userRepository.loginWithGoogle()).called(1);
+      verify(() => _userRepository.saveUserSession(_userGoogle)).called(1);
     });
   });
 }
