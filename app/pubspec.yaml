@@ -15,6 +15,7 @@ dependencies:
     path: ../data/
   domain:
     path: ../domain/
+  cached_network_image: ^3.0.0
   cupertino_icons: ^1.0.2
   flutter_modular: ^3.0.2+1
   flutter_signin_button: ^2.0.0
