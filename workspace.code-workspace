@@ -12,5 +12,10 @@
 			"name": "domain",
 			"path": "domain"
 		}
-	]
+	],
+	"settings": {
+		"cSpell.words": [
+			"asuka"
+		]
+	}
 }

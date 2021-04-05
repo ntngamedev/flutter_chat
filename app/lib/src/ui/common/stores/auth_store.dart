@@ -34,14 +34,16 @@ class AuthStore extends NotifierStore<Exception, User> {
     setLoading(true);
     try {
       update(await _authInteractor.loginWithFacebook());
+      setLoading(false);
       goHomeScreen();
     } catch (ex) {
       setError(ex);
+      setLoading(false);
     }
-    setLoading(false);
   }
 
-  logout() {
+  logout() async {
+    await _authInteractor.removeUserSession();
     update(null);
     goLoginScreen();
   }

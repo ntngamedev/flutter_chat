@@ -1,8 +1,8 @@
 import 'package:data/local/chat_database.dart';
 import 'package:data/local/user/user_database.dart';
 import 'package:data/local/user/user_database_impl.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class ChatDatabaseImpl implements ChatDatabase {
   UserDatabase _userDatabase;
@@ -12,7 +12,7 @@ class ChatDatabaseImpl implements ChatDatabase {
   }
 
   _init() async {
-    Hive.init((await getApplicationSupportDirectory()).path);
+    await Hive.initFlutter();
     this._userDatabase = UserDatabaseImpl();
   }
 

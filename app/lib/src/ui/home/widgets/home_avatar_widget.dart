@@ -22,7 +22,7 @@ class HomeAvatar extends StatelessWidget {
             radius: 56.0,
             backgroundColor: Theme.of(context).accentColor,
             child: CircleAvatar(
-              radius: 54.0,
+              radius: 55.0,
               backgroundColor: Colors.white,
               child: CircleAvatar(
                   radius: 48.0,
@@ -31,12 +31,12 @@ class HomeAvatar extends StatelessWidget {
                   )),
             ),
           ),
-          SizedBox(height: 8.0),
+          SizedBox(height: 4.0),
           Text(
             user.name,
             style: TextStyle(fontWeight: FontWeight.w700),
           ),
-          SizedBox(height: 16.0),
+          SizedBox(height: 8.0),
           OutlinedButton(
             onPressed: onLogout,
             child: Text("Logout"),
