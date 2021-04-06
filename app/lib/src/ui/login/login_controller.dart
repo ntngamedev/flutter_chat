@@ -11,4 +11,8 @@ class LoginController extends AppController {
   loginWithFacebook() {
     _authStore.loginWithFacebook();
   }
+
+  loginWithGoogle() {
+    _authStore.loginWithGoogle();
+  }
 }

@@ -4,6 +4,7 @@ import 'package:app/src/ui/common/stores/auth_store.dart';
 import 'package:app/src/ui/common/widgets/app_logo.dart';
 import 'package:app/src/ui/login/login_controller.dart';
 import 'package:data/external/errors/facebook/facebook_login_failed.dart';
+import 'package:data/external/errors/google/google_login_failed.dart';
 import 'package:domain/entities/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
@@ -53,7 +54,10 @@ class _LoginScreenState extends AppState<LoginScreen, LoginController> {
                 SizedBox(height: 4.0),
                 SignInButton(
                   Buttons.Google,
-                  onPressed: () {},
+                  onPressed: () {
+                    asuka.removeCurrentSnackBar();
+                    controller.loginWithGoogle();
+                  },
                 ),
                 SizedBox(height: 48.0),
               ],
@@ -70,8 +74,15 @@ class _LoginScreenState extends AppState<LoginScreen, LoginController> {
               onError: (context, error) {
                 if (error is FacebookLoginFailed) {
                   _showSnackBar('Login with Facebook failed.');
+                  return Container();
                 }
 
+                if (error is GoogleLoginFailed) {
+                  _showSnackBar('Login with Google failed.');
+                  return Container();
+                }
+
+                _showSnackBar('Error unknow in Login.');
                 return Container();
               },
               onState: (context, state) {

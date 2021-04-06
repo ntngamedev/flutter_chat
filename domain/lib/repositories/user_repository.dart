@@ -5,5 +5,7 @@ abstract class UserRepository {
   Future removeUserSession();
   Future<User> getUserSession();
   Future<User> loginWithFacebook();
+  Future logoutWithFacebook();
   Future<User> loginWithGoogle();
+  Future logoutWithGoogle();
 }

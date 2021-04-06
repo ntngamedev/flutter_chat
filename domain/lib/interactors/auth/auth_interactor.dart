@@ -9,7 +9,11 @@ class AuthInteractor {
 
   Future saveUserSession(User user) => _userRepository.saveUserSession(user);
 
-  Future removeUserSession() => _userRepository.removeUserSession();
+  Future removeUserSession() async {
+    await _userRepository.logoutWithFacebook();
+    await _userRepository.logoutWithGoogle();
+    await _userRepository.removeUserSession();
+  }
 
   Future<User> getUserSesion() async {
     final user = await _userRepository.getUserSession();

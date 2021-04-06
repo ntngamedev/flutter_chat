@@ -32,7 +32,20 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<User> loginWithGoogle() {
-    throw UnimplementedError();
+  Future logoutWithFacebook() => _chatClient.facebookAPI.logout();
+
+  @override
+  Future<User> loginWithGoogle() async {
+    final user = await _chatClient.googleSiginApi.login();
+
+    return User(
+      user.id,
+      user.name,
+      user.avatarURL,
+      UserType.google,
+    );
   }
+
+  @override
+  Future logoutWithGoogle() => _chatClient.googleSiginApi.logout();
 }

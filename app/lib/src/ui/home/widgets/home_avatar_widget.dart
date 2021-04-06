@@ -24,11 +24,13 @@ class HomeAvatar extends StatelessWidget {
             child: CircleAvatar(
               radius: 55.0,
               backgroundColor: Colors.white,
-              child: CircleAvatar(
+              child: CachedNetworkImage(
+                imageUrl: user.avatarURL,
+                imageBuilder: (_, imageProvider) => CircleAvatar(
                   radius: 48.0,
-                  backgroundImage: CachedNetworkImageProvider(
-                    user.avatarURL,
-                  )),
+                  backgroundImage: imageProvider,
+                ),
+              ),
             ),
           ),
           SizedBox(height: 4.0),

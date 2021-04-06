@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_facebook_auth: ^3.3.2
+  google_sign_in: ^5.0.1
   hive: ^2.0.2
   hive_flutter: ^1.0.0
 

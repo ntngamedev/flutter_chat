@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "722893069047",
+    "project_id": "flutter-chat-b4152",
+    "storage_bucket": "flutter-chat-b4152.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722893069047:android:34393a8e1dc3bcc0ed91f2",
+        "android_client_info": {
+          "package_name": "pt.valerio.flutter.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722893069047-rpd9gd3j5874pmkv9vql8aa6suhura8s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pt.valerio.flutter.chat",
+            "certificate_hash": "ad27ec7e29efa924ab13f49332f054ae27a10ccb"
+          }
+        },
+        {
+          "client_id": "722893069047-ubv7n6nusfo7lm5ko2bi33vvvu46492a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjS4A_eDuuvaV47B41PGaWV2K8ijZ1ZvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722893069047-ubv7n6nusfo7lm5ko2bi33vvvu46492a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "722893069047-o340tafaaf37bdfhn9eg7g6hccmjsh70.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "pt.valerio.flutter.chat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

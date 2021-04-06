@@ -30,6 +30,8 @@ void main() {
 
     test("removeUserSession shoud return nothing", () async {
       expect((await _authInteractor.removeUserSession()), isA());
+      verify(() => _userRepository.logoutWithFacebook()).called(1);
+      verify(() => _userRepository.logoutWithGoogle()).called(1);
       verify(() => _userRepository.removeUserSession()).called(1);
     });
 
