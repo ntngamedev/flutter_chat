@@ -10,8 +10,6 @@ class UserLocal extends HiveObject {
   final String name;
   @HiveField(2)
   final String avatarURL;
-  @HiveField(3)
-  final String type;
 
-  UserLocal(this.id, this.name, this.avatarURL, this.type);
+  UserLocal(this.id, this.name, this.avatarURL);
 }

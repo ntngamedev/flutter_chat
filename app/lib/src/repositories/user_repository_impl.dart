@@ -27,7 +27,6 @@ class UserRepositoryImpl implements UserRepository {
       user.id,
       user.name,
       user.avatarURL,
-      UserType.facebook,
     );
   }
 
@@ -42,7 +41,6 @@ class UserRepositoryImpl implements UserRepository {
       user.id,
       user.name,
       user.avatarURL,
-      UserType.google,
     );
   }
 

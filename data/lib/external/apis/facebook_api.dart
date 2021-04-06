@@ -3,12 +3,12 @@ import 'package:data/external/errors/facebook/facebook_login_failed.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class FacebookAPI {
-  final FacebookAuth _instance = FacebookAuth.instance;
+  FacebookAuth get _facebookAuth => FacebookAuth.instance;
 
-  Future<bool> isLogged() async => (await _instance.accessToken != null);
+  Future<bool> isLogged() async => (await _facebookAuth.accessToken != null);
 
   Future<FacebookUserContract> login() async {
-    final result = await _instance.login(permissions: ["public_profile"]);
+    final result = await _facebookAuth.login(permissions: ["public_profile"]);
 
     if (result.status == LoginStatus.success) {
       final userData = await FacebookAuth.instance.getUserData();
@@ -23,5 +23,5 @@ class FacebookAPI {
     throw FacebookLoginFailed();
   }
 
-  Future logout() => _instance.logOut();
+  Future logout() => _facebookAuth.logOut();
 }

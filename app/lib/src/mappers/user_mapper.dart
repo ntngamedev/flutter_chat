@@ -11,7 +11,6 @@ extension UserLocalExtension on UserLocal {
       id,
       name,
       avatarURL,
-      UserType.none,
     );
   }
 }
@@ -22,7 +21,6 @@ extension UserExtension on User {
       id,
       name,
       avatarURL,
-      type.toString(),
     );
   }
 }

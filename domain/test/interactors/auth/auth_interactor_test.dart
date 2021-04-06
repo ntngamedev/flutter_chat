@@ -10,22 +10,18 @@ class UserRepositoryMock extends Mock implements UserRepository {}
 void main() {
   UserRepository _userRepository;
   AuthInteractor _authInteractor;
-  User _userNone;
-  User _userFacebook;
-  User _userGoogle;
+  User _user;
 
   setUpAll(() {
     _userRepository = UserRepositoryMock();
     _authInteractor = AuthInteractor(_userRepository);
-    _userNone = User("1", "Fulano", "", UserType.none);
-    _userFacebook = User("2", "Beltrano", "", UserType.facebook);
-    _userGoogle = User("2", "Francisco", "", UserType.google);
+    _user = User("1", "Fulano", "");
   });
 
   group("Auth Interactor: ", () {
     test("saveUserSession shoud return nothing", () async {
-      expect((await _authInteractor.saveUserSession(_userNone)), isA());
-      verify(() => _userRepository.saveUserSession(_userNone)).called(1);
+      expect((await _authInteractor.saveUserSession(_user)), isA());
+      verify(() => _userRepository.saveUserSession(_user)).called(1);
     });
 
     test("removeUserSession shoud return nothing", () async {
@@ -36,7 +32,7 @@ void main() {
     });
 
     test("getUserSession should return an User", () async {
-      when(() => _userRepository.getUserSession()).thenAnswer((_) async => _userNone);
+      when(() => _userRepository.getUserSession()).thenAnswer((_) async => _user);
       expect(await _authInteractor.getUserSesion(), isA<User>());
     });
 
@@ -45,18 +41,18 @@ void main() {
       expect(() async => _authInteractor.getUserSesion(), throwsA(isA<UserNotSessionException>()));
     });
 
-    test("loginWithFacebook shoud return user type facebook and save user in session", () async {
-      when(() => _userRepository.loginWithFacebook()).thenAnswer((_) async => _userFacebook);
-      expect((await _authInteractor.loginWithFacebook()).type, equals(UserType.facebook));
+    test("loginWithFacebook shoud return user and save user in session", () async {
+      when(() => _userRepository.loginWithFacebook()).thenAnswer((_) async => _user);
+      expect(await _authInteractor.loginWithFacebook(), isA<User>());
       verify(() => _userRepository.loginWithFacebook()).called(1);
-      verify(() => _userRepository.saveUserSession(_userFacebook)).called(1);
+      verify(() => _userRepository.saveUserSession(_user)).called(1);
     });
 
     test("loginWithGoogle shoud return user type google and save user in session", () async {
-      when(() => _userRepository.loginWithGoogle()).thenAnswer((_) async => _userGoogle);
-      expect((await _authInteractor.loginWithGoogle()).type, equals(UserType.google));
+      when(() => _userRepository.loginWithGoogle()).thenAnswer((_) async => _user);
+      expect(await _authInteractor.loginWithGoogle(), isA<User>());
       verify(() => _userRepository.loginWithGoogle()).called(1);
-      verify(() => _userRepository.saveUserSession(_userGoogle)).called(1);
+      verify(() => _userRepository.saveUserSession(_user)).called(1);
     });
   });
 }
